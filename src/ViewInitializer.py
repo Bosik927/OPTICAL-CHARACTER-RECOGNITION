@@ -4,6 +4,7 @@ from PIL import ImageTk, Image
 from tkinter.filedialog import askopenfilename
 import Preprocesing as pre
 import cv2
+import time
 
 picture_width = 960
 picture_height = 700
@@ -21,6 +22,7 @@ def create_searching_button(root, canvas, image_on_canvas):
 # TODO: Optimize
 def search_button_event(canvas, image_on_canvas, root):
     path = askopenfilename()
+    start_time = time.time()
     image = resize_image(path)
     canvas.itemconfig(image_on_canvas, image=image)
     canvas.itemconfig(image_on_canvas, image=image)
@@ -35,33 +37,26 @@ def search_button_event(canvas, image_on_canvas, root):
     im_bw = cv2.threshold(img, 128, 255, cv2.THRESH_BINARY)[1]
     cv2.imwrite('binary_image2.png', im_bw)
 
-    vectors = []
-
-    words = pre.cropTextLine(im_bw)
+    words = pre.crop_text_line(im_bw)
     for word in words:
-        word.add_padding()
-        for char in word.chars:
-            vector = pre.create_binary_vector(char)
-            vectors.append(vector)
-    pre.saveCroppedCharacters(words)
+        word.vectorize_chars()
 
-    #TODO: maintain in memory
-    f = open("vectors.txt", "w+")
-    for vector in vectors:
-        f.write(str(vector)+'\n')
-    f.close()
+    pre.save_vectorized_chars(words)
 
-    create_rectangles2(root, canvas, words)
-    #img = cv2.imread('grey_scale_2.png')
-
+    create_rectangles2(root, canvas, words, ratio)
+    print("Elapsed: " + str(time.time()-start_time))
     canvas.itemconfig(image=image)
 
 
-def create_rectangles2(root, canvas, words):
+def create_rectangles2(root, canvas, words, ratio):
     rectangles.clear()
     for word in words:
+        x1 = int(word.x1 / ratio) - 2
+        x2 = int(word.x2 / ratio) + 2
+        y1 = int(word.y1 / ratio) - 2
+        y2 = int(word.y2 / ratio) + 2
         rectangles.append(
-            create_rectangle(word.x1 - 3, word.y1 - 3, word.x2 + 3, word.y2 + 3, root, canvas, fill='green', alpha=.2))
+            create_rectangle(x1, y1, x2, y2, root, canvas, fill='green', alpha=.2))
 
 
 def create_grey_scale_image(path):

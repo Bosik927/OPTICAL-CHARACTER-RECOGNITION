@@ -1,7 +1,5 @@
 import glob
-import math
 import os
-
 import cv2
 import numpy
 
@@ -19,8 +17,7 @@ class Word:
     def get_coordinate(self):
         return str(self.x1) + " " + str(self.x2) + " " + str(self.y1) + " " + str(self.y2)
 
-    # TODO: Implement
-    def add_padding(self):
+    def vectorize_chars(self):
         chars = []
         for char in self.chars:
             width, height = char.shape[:2]
@@ -33,9 +30,10 @@ class Word:
             y1_offset = int((32 - height) / 2)
             y2_offset = 32 - height - y1_offset
 
-            constant = cv2.copyMakeBorder(char, x1_offset, x2_offset, y1_offset, y2_offset, cv2.BORDER_CONSTANT,
+            padded_char = cv2.copyMakeBorder(char, x1_offset, x2_offset, y1_offset, y2_offset, cv2.BORDER_CONSTANT,
                                           value=(255, 255, 255))
-            chars.append(constant)
+
+            chars.append(create_binary_vector(padded_char))
         self.chars = chars
 
 
@@ -139,7 +137,7 @@ def find_blink_lines(img):
 
 
 # Wycina znaki, zapisuje je w obiekcie klasy Word
-def cropTextLine(binaryImage):
+def crop_text_line(binaryImage):
     heigth, width, _ = binaryImage.shape
     lineListHorizontal = find_blink_lines(binaryImage)
     crpNum = 1
@@ -167,7 +165,6 @@ def cropTextLine(binaryImage):
                     x1 = charCoord[y]
                     crpChars = []
             crpChars.append((croppedImgVer))
-
     return wordList
 
 # Zapisuje znaki, trzeba utworzyć folder cropped, żeby w nim zapisywało
@@ -182,3 +179,12 @@ def saveCroppedCharacters(wordList):
             fileName = str(crpNum) + " " + word.get_coordinate() + '.png'
             crpNum += 1
             cv2.imwrite(os.path.join('cropped', fileName), char)
+
+
+def save_vectorized_chars(word_list):
+    f = open("vectors.txt", "w+")
+    for word in word_list:
+        for vector in word.chars:
+            vector_string = ''.join(map(str, vector))
+            f.write(str(vector_string) + '\n')
+    f.close()
