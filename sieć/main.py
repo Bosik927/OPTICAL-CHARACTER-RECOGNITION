@@ -27,12 +27,12 @@ def read_weights():
 
 def calculate_euclidean_distance(input_vector, weights):
     pom = []
-    e = 0
     for x in range(len(weights)):
+        e = 0
         for y in range(len(input_vector)):
             d = (weights[x][y] - input_vector[y])
             e = e + d * d
-        pom.insert(x, e)
+        pom.append(e)
     return pom
 
 
@@ -47,6 +47,12 @@ def choose_winning_neuron(output_vector):
 def update_weights(weights, winner, learnin_rate, input_neurons):
     for x in range(len(weights[winner])):
         weights[winner][x] = weights[winner][x] + learnin_rate * (input_neurons[x] - weights[winner][x])
+    if winner != 0:
+        for x in range(len(weights[winner-1])):
+            weights[winner-1][x] = 0.5 * (weights[winner-1][x] + learnin_rate * (input_neurons[x] - weights[winner-1][x]))
+    if winner != input_neurons:
+        for x in range(len(weights[winner - 1])):
+            weights[winner + 1][x] = 0.5 * (weights[winner + 1][x] + learnin_rate * (input_neurons[x] - weights[winner + 1][x]))
 
 
 def set_random_vector(n):
@@ -54,3 +60,13 @@ def set_random_vector(n):
     for x in range(n):
         pom.insert(x, random.randint(0, 1))
     return pom
+
+
+def string_to_vector(string):
+    string = string.replace('[', '')
+    string = string.replace(']', '')
+    vector = string.split(', ')
+    vector1 = []
+    for x in vector:
+        vector1.append(float(x))
+    return vector1
