@@ -23,23 +23,34 @@ class Word:
     def add_padding(self):
         chars = []
         for char in self.chars:
-            # white_img = numpy.zeros((32, 32, 3), numpy.uint8)
-            # white_img.fill(255)
-            width, height, _ = char.shape
+            width, height = char.shape[:2]
             char_coordinates = find_text(find_blink_lines(char))
-
             char = char[char_coordinates[0]:char_coordinates[1], 0:width]
 
-            x_offset = math.floor((32 - height) / 2)
-            y_offset = math.floor((32 - width) / 2)
-            # white_img[y_offset:y_offset + char.shape[0], x_offset:x_offset + char.shape[1]] = char
-            # constant = cv2.copyMakeBorder(char, 10, 10, 10, 10, cv2.BORDER_CONSTANT, value=(255,255,255))
-            constant = cv2.copyMakeBorder(char, x_offset, x_offset, y_offset, y_offset, cv2.BORDER_CONSTANT,
+            width, height = char.shape[:2]
+            x1_offset = int((32 - width) / 2)
+            x2_offset = 32 - width - x1_offset
+            y1_offset = int((32 - height) / 2)
+            y2_offset = 32 - height - y1_offset
+
+            constant = cv2.copyMakeBorder(char, x1_offset, x2_offset, y1_offset, y2_offset, cv2.BORDER_CONSTANT,
                                           value=(255, 255, 255))
-            # chars.append(white_img)
-            chars.append(char)
+            chars.append(constant)
         self.chars = chars
 
+
+def create_binary_vector(img):
+    height, width = img.shape[:2]
+    binary_vector = []
+
+    for x in range(height):
+        for y in range(width):
+            pixel = img[x, y]
+            if pixel[0] == 255:
+                binary_vector.append(0)
+            else:
+                binary_vector.append(1)
+    return binary_vector
 
 # Funkcja Marcina
 def un_skew_text(image):
@@ -69,14 +80,11 @@ def find_font_size(blank_line_list):
     return numpy.median(len_black_block)
 
 
-# TODO: Delete prints
 def normalize_font_size(img):
     img_bin = cv2.threshold(img, 128, 255, cv2.THRESH_BINARY)[1]
     estimated_font_size = find_font_size(find_blink_lines(img_bin))
     ratio = 1 / (estimated_font_size / 30)
-    print("font size " + str(estimated_font_size))
-    print(ratio)
-    return cv2.resize(img, None, fx=ratio, fy=ratio)
+    return cv2.resize(img, None, fx=ratio, fy=ratio), ratio
 
 
 # Zamienia białe pixele na 0 a czarne na 1
@@ -130,15 +138,14 @@ def find_blink_lines(img):
     return line_list
 
 
-# Wycina linie tekstu, trzeba utworzyć folder cropped, żeby w nim zapisywało
+# Wycina znaki, zapisuje je w obiekcie klasy Word
 def cropTextLine(binaryImage):
     heigth, width, _ = binaryImage.shape
     lineListHorizontal = find_blink_lines(binaryImage)
     crpNum = 1
     wordList = []
     linesCoord = find_text(lineListHorizontal)
-    estimatedSpaceSize = find_font_size(lineListHorizontal)
-    print("space size:" + str(estimatedSpaceSize))
+    estimatedSpaceSize = 6
     for x in range(0, len(linesCoord), 2):
         croppedImgHor = binaryImage[linesCoord[x]:linesCoord[x + 1], 0:width]
         lineListVertical = find_blink_lines(numpy.rot90(croppedImgHor, k=3))
@@ -148,11 +155,13 @@ def cropTextLine(binaryImage):
         crpChars = []
         for y in range(0, len(charCoord), 2):
             croppedImgVer = croppedImgHor[0:rows, charCoord[y]:charCoord[y + 1]]
+            x2 = charCoord[y - 1]
             if (y == len(charCoord) - 2):
                 crpChars.append((croppedImgVer))
+                x2 = charCoord[y + 1]
             if (y > 0):
-                if ((charCoord[y] - charCoord[y - 1]) > 4 or y == len(charCoord) - 2):
-                    word = Word(x1, charCoord[y - 1], linesCoord[x], linesCoord[x + 1])
+                if ((charCoord[y] - charCoord[y - 1]) > estimatedSpaceSize or y == len(charCoord) - 2):
+                    word = Word(x1, x2, linesCoord[x], linesCoord[x + 1])
                     word.chars = crpChars
                     wordList.append(word)
                     x1 = charCoord[y]
@@ -161,7 +170,7 @@ def cropTextLine(binaryImage):
 
     return wordList
 
-
+# Zapisuje znaki, trzeba utworzyć folder cropped, żeby w nim zapisywało
 def saveCroppedCharacters(wordList):
     crpNum = 1
     files = glob.glob('cropped/*.png')
@@ -173,20 +182,3 @@ def saveCroppedCharacters(wordList):
             fileName = str(crpNum) + " " + word.get_coordinate() + '.png'
             crpNum += 1
             cv2.imwrite(os.path.join('cropped', fileName), char)
-
-# Funkcja Stasia, podstawowa obsługa programu
-# def mapToBinaryImage(path):
-#     img = cv2.imread(path)
-#     im_bw = un_skew_text(img)  # prostrowanie skanu
-#     im_bw = cv2.threshold(im_bw, 128, 255, cv2.THRESH_BINARY)[1]
-#
-#     cv2.imwrite('binary_image.png', im_bw)
-#
-#     binaryImage = ImageTk.PhotoImage(Image.open('binary_image.png'))
-#     leftBottomImage.configure(image=binaryImage)
-#     leftBottomImage.image = binaryImage
-#
-#     wordList = cropTextLine(im_bw)
-#     #for word in wordList:
-#         #word.printCoords()
-#     saveCroppedCharacters(wordList)

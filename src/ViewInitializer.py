@@ -29,14 +29,30 @@ def search_button_event(canvas, image_on_canvas, root):
     grey_scale_image.save('grey_scale_2.png')
 
     img = cv2.imread('grey_scale_2.png')
-    words = pre.cropTextLine(img)
+    img, ratio = pre.normalize_font_size(img)
+    cv2.imwrite('normalized.png', img)
 
-    create_rectangles2(root, canvas, words)
-
-    img = cv2.imread('grey_scale_2.png')
     im_bw = cv2.threshold(img, 128, 255, cv2.THRESH_BINARY)[1]
     cv2.imwrite('binary_image2.png', im_bw)
-    create_binary_vector(im_bw)
+
+    vectors = []
+
+    words = pre.cropTextLine(im_bw)
+    for word in words:
+        word.add_padding()
+        for char in word.chars:
+            vector = pre.create_binary_vector(char)
+            vectors.append(vector)
+    pre.saveCroppedCharacters(words)
+
+    #TODO: maintain in memory
+    f = open("vectors.txt", "w+")
+    for vector in vectors:
+        f.write(str(vector)+'\n')
+    f.close()
+
+    create_rectangles2(root, canvas, words)
+    #img = cv2.imread('grey_scale_2.png')
 
     canvas.itemconfig(image=image)
 
@@ -46,21 +62,6 @@ def create_rectangles2(root, canvas, words):
     for word in words:
         rectangles.append(
             create_rectangle(word.x1 - 3, word.y1 - 3, word.x2 + 3, word.y2 + 3, root, canvas, fill='green', alpha=.2))
-
-
-# TODO: Implement
-def create_binary_vector(img):
-    height, width, channels = img.shape
-    BLACK = [255, 255, 255]
-
-    for x in range(height):
-        for y in range(width):
-            asd = img[x, y]
-            if asd == BLACK:
-                print('1')
-            else:
-                print('0')
-    # print(str(height) + ' ' + str(width))
 
 
 def create_grey_scale_image(path):
