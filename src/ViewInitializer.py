@@ -19,7 +19,7 @@ def create_searching_button(root, canvas, image_on_canvas):
     return searching_button
 
 
-# TODO: Optimize
+# TODO: Optimiześ
 def search_button_event(canvas, image_on_canvas, root):
     path = askopenfilename()
     start_time = time.time()
@@ -40,12 +40,14 @@ def search_button_event(canvas, image_on_canvas, root):
     words = pre.crop_text_line(im_bw)
     for word in words:
         word.vectorize_chars()
+    pre.save_vectorized_chars(words)
 
     pre.save_vectorized_chars(words)
 
     create_rectangles2(root, canvas, words, ratio)
     print("Elapsed: " + str(time.time()-start_time))
     canvas.itemconfig(image=image)
+
 
 
 def create_rectangles2(root, canvas, words, ratio):
