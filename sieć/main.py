@@ -47,13 +47,7 @@ def choose_winning_neuron(output_vector):
 def update_weights(weights, winner, learnin_rate, input_neurons):
     for x in range(len(weights[winner])):
         weights[winner][x] = weights[winner][x] + learnin_rate * (input_neurons[x] - weights[winner][x])
-    if winner != 0:
-        for x in range(len(weights[winner-1])):
-            weights[winner-1][x] = 0.5 * (weights[winner-1][x] + learnin_rate * (input_neurons[x] - weights[winner-1][x]))
-    if winner != input_neurons:
-        for x in range(len(weights[winner - 1])):
-            weights[winner + 1][x] = 0.5 * (weights[winner + 1][x] + learnin_rate * (input_neurons[x] - weights[winner + 1][x]))
-
+   
 
 def set_random_vector(n):
     pom = []
@@ -63,10 +57,11 @@ def set_random_vector(n):
 
 
 def string_to_vector(string):
-    string = string.replace('[', '')
-    string = string.replace(']', '')
-    vector = string.split(', ')
+    # string = string.replace('[', '')
+    # string = string.replace(']', '')
+    # vector = string.split(', ')
+    pom = string.strip('\n')
     vector1 = []
-    for x in vector:
-        vector1.append(float(x))
+    for x in pom:
+        vector1.append(int(x))
     return vector1

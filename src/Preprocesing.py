@@ -22,7 +22,7 @@ class Word:
         for char in self.chars:
             width, height = char.shape[:2]
             char_coordinates = find_text(find_blink_lines(char))
-            char = char[char_coordinates[0]:char_coordinates[1], 0:width]
+            char = char[char_coordinates[0]:char_coordinates[len(char_coordinates)-1], 0:width]
 
             width, height = char.shape[:2]
             x1_offset = int((32 - width) / 2)
