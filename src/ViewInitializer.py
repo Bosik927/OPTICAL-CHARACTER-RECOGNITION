@@ -5,26 +5,30 @@ from tkinter.filedialog import askopenfilename
 import Preprocesing as pre
 import cv2
 import time
+import network.main2 as network
 
 picture_width = 960
 picture_height = 700
 rectangles = []
+values = []
+ids = []
 
 
-def create_searching_button(root, canvas, image_on_canvas):
+def create_searching_button(root, canvas, image_on_canvas, text):
     searching_button = tkinter.Button(root, text="Search image")
     searching_button.grid(columnspan=1)
     searching_button.bind('<Button-1>',
-                          lambda event, can=canvas, img=image_on_canvas, ro=root: search_button_event(can, img, ro))
+                          lambda event, can=canvas, img=image_on_canvas, ro=root, tx=text: search_button_event(can,
+                                                                                                               img, ro,
+                                                                                                               tx))
     return searching_button
 
 
 # TODO: Optimiześ
-def search_button_event(canvas, image_on_canvas, root):
+def search_button_event(canvas, image_on_canvas, root, text):
     path = askopenfilename()
     start_time = time.time()
     image = resize_image(path)
-    canvas.itemconfig(image_on_canvas, image=image)
     canvas.itemconfig(image_on_canvas, image=image)
 
     (grey_scale_image, gui_grey_scale_image) = create_grey_scale_image(path)
@@ -42,23 +46,35 @@ def search_button_event(canvas, image_on_canvas, root):
         word.vectorize_chars()
     pre.save_vectorized_chars(words)
 
-    pre.save_vectorized_chars(words)
+    for word in words:
+        word.values = network.function2(word.chars)
 
-    create_rectangles2(root, canvas, words, ratio)
-    print("Elapsed: " + str(time.time()-start_time))
+    create_rectangle_cords(root, canvas, words, ratio, text)
+
+    # for i in range(len(rectangles)):
+    #     canvas.tag_bind(ids[i], '<ButtonPress-1>', lambda event, tx=text, va=values[i], id=ids[i]: asd(tx, va, id))
+
+    print("Elapsed: " + str(time.time() - start_time))
     canvas.itemconfig(image=image)
 
 
+def asd(text, value, id):
+    print("ID on click: " + str(id))
+    text.delete('1.0', END)
+    text.insert(INSERT, value)
 
-def create_rectangles2(root, canvas, words, ratio):
+
+def create_rectangle_cords(root, canvas, words, ratio, text):
     rectangles.clear()
+    values.clear()
     for word in words:
         x1 = int(word.x1 / ratio) - 2
         x2 = int(word.x2 / ratio) + 2
         y1 = int(word.y1 / ratio) - 2
         y2 = int(word.y2 / ratio) + 2
-        rectangles.append(
-            create_rectangle(x1, y1, x2, y2, root, canvas, fill='green', alpha=.2))
+
+        create_rectangle(x1, y1, x2, y2, root, canvas, word, text, fill='green', alpha=.2)
+        values.append(word.values)
 
 
 def create_grey_scale_image(path):
@@ -76,7 +92,7 @@ def create_image(path):
 
 
 def create_text(root):
-    text = tkinter.Text(root, height=43, width=30)
+    text = tkinter.Text(root, height=10, width=33)
     text.grid(row=1, column=1)
     return text
 
@@ -111,15 +127,19 @@ def create_main_image(image, root):
     return canvas, image_on_canvas
 
 
-def create_rectangle(x1, y1, x2, y2, root, canvas, **kwargs):
+def create_rectangle(x1, y1, x2, y2, root, canvas, word, text, **kwargs):
     if 'alpha' in kwargs:
         alpha = int(kwargs.pop('alpha') * 255)
         fill = kwargs.pop('fill')
         fill = root.winfo_rgb(fill) + (alpha,)
         image = Image.new('RGBA', (x2 - x1, y2 - y1), fill)
         rectangles.append(ImageTk.PhotoImage(image))
-        canvas.create_image(x1, y1, image=rectangles[-1], anchor='nw')
-    canvas.create_rectangle(x1, y1, x2, y2, **kwargs)
+        idd = canvas.create_image(x1, y1, image=rectangles[-1], anchor='nw')
+        canvas.tag_bind(idd, '<ButtonPress-1>', lambda event, tx=text, va=word.values, idd=idd: asd(tx, va, idd))
+        print("Created ID: " + str (idd))
+        ids.append(idd)
+    idd = canvas.create_rectangle(x1, y1, x2, y2, **kwargs)
+    ids.append(idd)
 
 
 # TODO: Delete

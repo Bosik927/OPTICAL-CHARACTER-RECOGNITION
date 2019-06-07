@@ -7,6 +7,7 @@ import numpy
 # TODO: Delete unnecessary comments
 class Word:
     chars = []
+    values = []
 
     def __init__(self, x1, x2, y1, y2):
         self.x1 = x1
@@ -22,7 +23,7 @@ class Word:
         for char in self.chars:
             width, height = char.shape[:2]
             char_coordinates = find_text(find_blink_lines(char))
-            char = char[char_coordinates[0]:char_coordinates[len(char_coordinates)-1], 0:width]
+            char = char[char_coordinates[0]:char_coordinates[len(char_coordinates) - 1], 0:width]
 
             width, height = char.shape[:2]
             x1_offset = int((32 - width) / 2)
@@ -31,7 +32,7 @@ class Word:
             y2_offset = 32 - height - y1_offset
 
             padded_char = cv2.copyMakeBorder(char, x1_offset, x2_offset, y1_offset, y2_offset, cv2.BORDER_CONSTANT,
-                                          value=(255, 255, 255))
+                                             value=(255, 255, 255))
 
             chars.append(create_binary_vector(padded_char))
         self.chars = chars
@@ -49,6 +50,7 @@ def create_binary_vector(img):
             else:
                 binary_vector.append(1)
     return binary_vector
+
 
 # Funkcja Marcina
 def un_skew_text(image):
@@ -166,6 +168,7 @@ def crop_text_line(binaryImage):
                     crpChars = []
             crpChars.append((croppedImgVer))
     return wordList
+
 
 # Zapisuje znaki, trzeba utworzyć folder cropped, żeby w nim zapisywało
 def saveCroppedCharacters(wordList):

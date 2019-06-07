@@ -14,6 +14,6 @@ image = View.resize_image(path)
 read_label = View.create_read_label(root)
 read_button = View.create_read_button(root)
 text = View.create_text(root)
-searching_button = View.create_searching_button(root, canvas, image_on_canvas)
+searching_button = View.create_searching_button(root, canvas, image_on_canvas, text)
 
 root.mainloop()

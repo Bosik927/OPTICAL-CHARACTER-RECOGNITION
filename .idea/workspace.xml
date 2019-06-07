@@ -5,8 +5,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/OPTICAL-CHARACTER-RECOGNITION.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/OPTICAL-CHARACTER-RECOGNITION.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sieć/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sieć/main2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sieć/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sieć/main2.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/main2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sieć/symbols.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/symbols.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sieć/vectors" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/vectors" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Preprocesing.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Preprocesing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ViewInitializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewInitializer.py" afterDir="false" />
     </list>
@@ -21,8 +24,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+            <state relative-caret-position="272">
+              <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -39,25 +42,59 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ViewInitializer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="45" selection-start-line="45" selection-end-line="45" />
+            <state relative-caret-position="-449">
+              <caret line="88" column="10" selection-start-line="88" selection-start-column="4" selection-end-line="88" selection-end-column="10" />
               <folding>
-                <element signature="e#0#14#0" expanded="true" />
+                <element signature="e#3909#3923#0" />
+                <element signature="e#4120#4140#0" />
+                <element signature="e#4184#4204#0" />
+                <element signature="e#4245#4265#0" />
+                <element signature="e#4310#4331#0" />
+                <element signature="e#4434#4446#0" />
+                <element signature="e#4603#4776#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Preprocesing.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/normalized.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/network/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="24" column="95" selection-start-line="24" selection-start-column="95" selection-end-line="24" selection-end-column="95" />
+            <state>
               <folding>
-                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#89#291#0" />
+                <element signature="e#146#272#0" />
+                <element signature="e#335#415#0" />
+                <element signature="e#450#539#0" />
+                <element signature="e#603#815#0" />
+                <element signature="e#654#800#0" />
+                <element signature="e#715#778#0" />
+                <element signature="e#864#1032#0" />
+                <element signature="e#935#996#0" />
+                <element signature="e#1105#1247#0" />
+                <element signature="e#1283#1373#0" />
+                <element signature="e#1410#1631#0" />
+                <element signature="e#1410#1444#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/network/main2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="142">
+              <caret line="39" column="7" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
+              <folding>
+                <element signature="e#0#27#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -72,6 +109,25 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>w</find>
+      <find>Word</find>
+      <find>bind</find>
+      <find>for</find>
+      <find>i</find>
+      <find>sea</find>
+      <find>create</find>
+      <find>Label</find>
+      <find>re</find>
+      <find>text</find>
+      <find>lol</find>
+      <find>id</find>
+      <find>Text</find>
+      <find>cord</find>
+      <find>resize</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -82,16 +138,17 @@
         <option value="$PROJECT_DIR$/Main.py" />
         <option value="$PROJECT_DIR$/src/FullScreenAPp.py" />
         <option value="$PROJECT_DIR$/src/FullScreenApp.py" />
+        <option value="$PROJECT_DIR$/src/network/main2.py" />
+        <option value="$PROJECT_DIR$/src/Preprocesing.py" />
         <option value="$PROJECT_DIR$/src/Main.py" />
         <option value="$PROJECT_DIR$/src/ViewInitializer.py" />
-        <option value="$PROJECT_DIR$/src/Preprocesing.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-36" />
-    <option name="y" value="69" />
-    <option name="width" value="1296" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1297" />
     <option name="height" value="1000" />
   </component>
   <component name="ProjectView">
@@ -99,7 +156,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -110,17 +166,13 @@
             <path>
               <item name="OPTICAL-CHARACTER-RECOGNITION" type="b2602c69:ProjectViewProjectNode" />
               <item name="OPTICAL-CHARACTER-RECOGNITION" type="462c0819:PsiDirectoryNode" />
-              <item name="sieć" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OPTICAL-CHARACTER-RECOGNITION" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OPTICAL-CHARACTER-RECOGNITION" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -130,6 +182,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Bosik\Desktop\repositories\PZ[L]2\OPTICAL-CHARACTER-RECOGNITION\src\network" />
       <recent name="C:\Users\Bosik\Desktop\repositories\OCR\OPTICAL-CHARACTER-RECOGNITION\src" />
     </key>
   </component>
@@ -218,42 +271,140 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-36" y="69" width="1296" height="1000" extended-state="0" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22416534" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14805023" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32756633" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32756633" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32719547" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32719547" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.49858356" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3298731" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3298731" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32756633" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.65014166" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32719547" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.3298731" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/ViewInitializer.py</url>
+          <line>63</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/ViewInitializer.py</url>
+          <line>57</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="words[2]" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>len(rectangles)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>len(ids)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>ids</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>values</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>values[5]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>ids[3]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>i</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>i+1</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>rectangles</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/PIL/Image.py" />
-    <entry file="file://$PROJECT_DIR$/src/vectors.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-901">
-          <caret line="11" column="128" selection-start-line="10" selection-start-column="12" selection-end-line="11" selection-end-column="128" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/glob.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/network/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/network/vectors">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/vectors.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="40" lean-forward="true" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grey_scale_2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/binary_image2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/binary_image.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/download.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FullScreenApp.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -262,32 +413,114 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/network/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#89#291#0" />
+            <element signature="e#146#272#0" />
+            <element signature="e#335#415#0" />
+            <element signature="e#450#539#0" />
+            <element signature="e#603#815#0" />
+            <element signature="e#654#800#0" />
+            <element signature="e#715#778#0" />
+            <element signature="e#864#1032#0" />
+            <element signature="e#935#996#0" />
+            <element signature="e#1105#1247#0" />
+            <element signature="e#1283#1373#0" />
+            <element signature="e#1410#1631#0" />
+            <element signature="e#1410#1444#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/network/main2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="39" column="7" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/tkinter/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="823">
+          <caret line="1704" selection-start-line="1704" selection-end-line="1704" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/1903523524/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="237" column="4" selection-start-line="237" selection-start-column="4" selection-end-line="237" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/normalized.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+        <state relative-caret-position="272">
+          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ViewInitializer.py">
+    <entry file="file://$PROJECT_DIR$/src/Preprocesing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        <state relative-caret-position="142">
+          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#176#251#0" />
+            <element signature="e#291#373#0" />
+            <element signature="e#469#1140#0" />
+            <element signature="e#1205#1502#0" />
+            <element signature="e#1295#1477#0" />
+            <element signature="e#1330#1477#0" />
+            <element signature="e#1552#2136#0" />
+            <element signature="e#2180#2440#0" />
+            <element signature="e#2477#2708#0" />
+            <element signature="e#2790#2855#0" />
+            <element signature="e#2954#3198#0" />
+            <element signature="e#3028#3198#0" />
+            <element signature="e#3081#3198#0" />
+            <element signature="e#3302#3817#0" />
+            <element signature="e#3496#3710#0" />
+            <element signature="e#3820#3891#0" />
+            <element signature="e#3946#4286#0" />
+            <element signature="e#4030#4265#0" />
+            <element signature="e#4090#4229#0" />
+            <element signature="e#4971#5605#0" />
+            <element signature="e#5132#5202#0" />
+            <element signature="e#5243#5560#0" />
+            <element signature="e#5351#5560#0" />
+            <element signature="e#5741#6053#0" />
+            <element signature="e#5867#6053#0" />
+            <element signature="e#5903#6053#0" />
+            <element signature="e#6098#6303#0" />
+            <element signature="e#6163#6289#0" />
+            <element signature="e#6201#6289#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Preprocesing.py">
+    <entry file="file://$PROJECT_DIR$/src/ViewInitializer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="24" column="95" selection-start-line="24" selection-start-column="95" selection-end-line="24" selection-end-column="95" />
+        <state relative-caret-position="-449">
+          <caret line="88" column="10" selection-start-line="88" selection-start-column="4" selection-end-line="88" selection-end-column="10" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#3909#3923#0" />
+            <element signature="e#4120#4140#0" />
+            <element signature="e#4184#4204#0" />
+            <element signature="e#4245#4265#0" />
+            <element signature="e#4310#4331#0" />
+            <element signature="e#4434#4446#0" />
+            <element signature="e#4603#4776#0" />
           </folding>
         </state>
       </provider>

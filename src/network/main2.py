@@ -1,5 +1,5 @@
-import main
-import symbols
+import network.main as main
+import network.symbols as symbols
 
 input_neurons = 1024
 output_neurons = 94
@@ -37,16 +37,15 @@ def function(weights, filename):
 # main.save_weights(weights, "vectors")
 
 
-def function2(filename):
-    weights = main.read_weights("C:/Users/mietek/PycharmProjects/ocr3/vectors")
-    ff = open(str(filename), "r")
+def function2(vector):
+    weights = main.read_weights("C:/Users/Bosik/Desktop/repositories/PZ[L]2/OPTICAL-CHARACTER-RECOGNITION/src/network/vectors")
     list = []
-    for xx in ff:
-        input_vector = main.string_to_vector(xx)
-        output_vector2 = main.calculate_euclidean_distance(input_vector, weights)
+    for xx in vector:
+        # input_vector = main.string_to_vector(xx)
+        output_vector2 = main.calculate_euclidean_distance(xx, weights)
         winner = main.choose_winning_neuron(output_vector2)
         list.append(symbols.select_symbol(winner))
     return list
 
 
-print(function2("C:/Users/mietek/PycharmProjects/ocr3/venv/1.txt"))
+# print(function2("C:/Users/mietek/PycharmProjects/ocr3/venv/1.txt"))
