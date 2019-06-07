@@ -12,14 +12,14 @@ def set_random_weights(input_neurons, output_neurons):
     return weights
 
 
-def save_weights(weights):
-    file = open("weights", "wb")
+def save_weights(weights, filename):
+    file = open(str(filename), "wb")
     pickle.dump(weights, file)
     file.close()
 
 
-def read_weights():
-    file = open("weights", "rb")
+def read_weights(filename):
+    file = open(filename, "rb")
     data = pickle.load(file)
     file.close()
     return data

@@ -1,48 +1,52 @@
 import main
-import time
+import symbols
 
 input_neurons = 1024
 output_neurons = 94
 
 learning_rate = 0.5
-weights = main.read_weights()
-# weights = main.set_random_weights(input_neurons, output_neurons)
+# weights = main.read_weights("C:/Users/mietek/PycharmProjects/ocr3/venv/petla_100_learning_rate_0.5")
+weights = main.set_random_weights(input_neurons, output_neurons)
 
-#
-# output_vector = main.calculate_euclidean_distance(main.set_random_vector(input_neurons), weights)
-# print(weights)
-# print(output_vector)
-# winner = main.choose_winning_neuron(output_vector)
-# print(winner)
-# main.update_weights(weights, winner, learning_rate, main.set_random_vector(input_neurons))
-# print(weights)
 print("8=================================D~~")
 
 
-def function(weights):
-    ff = open("vectors.txt", "r")
+def function(weights, filename):
+    ff = open(str(filename), "r")
     counter = 0
     for xx in ff:
         input_vector = main.string_to_vector(xx)
-        output_vector2 = main.calculate_euclidean_distance(input_vector, weights)
-        #winner = counter
-        winner = main.choose_winning_neuron(output_vector2)
+        # output_vector2 = main.calculate_euclidean_distance(input_vector, weights)
+        winner = counter
+        # winner = main.choose_winning_neuron(output_vector2)
         main.update_weights(weights, winner, learning_rate, input_vector)
+        counter += 1
         if counter >= 93:
             counter = 0
-        else:
-            counter += 1
-        print(winner)
 
-start = time.time()
-for x in range(100):
-    function(weights)
-    print(x+1)
-end = time.time()
-print(end - start)
-main.save_weights(weights)
+# for x in range(1):
+#     function(weights, "C:/Users/mietek/PycharmProjects/ocr3/venv/1.txt")
+#     function(weights, "C:/Users/mietek/PycharmProjects/ocr3/venv/2.txt")
+#     function(weights, "C:/Users/mietek/PycharmProjects/ocr3/venv/3.txt")
+#     function(weights, "C:/Users/mietek/PycharmProjects/ocr3/venv/4.txt")
+#     function(weights, "C:/Users/mietek/PycharmProjects/ocr3/venv/5.txt")
+#     function(weights, "C:/Users/mietek/PycharmProjects/ocr3/venv/6.txt")
+#     function(weights, "C:/Users/mietek/PycharmProjects/ocr3/venv/7.txt")
+#     function(weights, "C:/Users/mietek/PycharmProjects/ocr3/venv/8.txt")
+#
+# main.save_weights(weights, "vectors")
 
-f = open("a.txt", "w")
-for x in weights:
-    f.write(str(x) + "\n")
-f.close()
+
+def function2(filename):
+    weights = main.read_weights("C:/Users/mietek/PycharmProjects/ocr3/vectors")
+    ff = open(str(filename), "r")
+    list = []
+    for xx in ff:
+        input_vector = main.string_to_vector(xx)
+        output_vector2 = main.calculate_euclidean_distance(input_vector, weights)
+        winner = main.choose_winning_neuron(output_vector2)
+        list.append(symbols.select_symbol(winner))
+    return list
+
+
+print(function2("C:/Users/mietek/PycharmProjects/ocr3/venv/1.txt"))
