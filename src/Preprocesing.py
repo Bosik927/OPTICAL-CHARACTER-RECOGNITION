@@ -37,6 +37,9 @@ class Word:
             chars.append(create_binary_vector(padded_char))
         self.chars = chars
 
+    def set_value(self, values):
+        self.values = values
+
 
 def create_binary_vector(img):
     height, width = img.shape[:2]
