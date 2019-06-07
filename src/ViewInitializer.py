@@ -51,15 +51,11 @@ def search_button_event(canvas, image_on_canvas, root, text):
 
     create_rectangle_cords(root, canvas, words, ratio, text)
 
-    # for i in range(len(rectangles)):
-    #     canvas.tag_bind(ids[i], '<ButtonPress-1>', lambda event, tx=text, va=values[i], id=ids[i]: asd(tx, va, id))
-
     print("Elapsed: " + str(time.time() - start_time))
     canvas.itemconfig(image=image)
 
 
-def asd(text, value, id):
-    print("ID on click: " + str(id))
+def on_click_event(text, value, id):
     text.delete('1.0', END)
     text.insert(INSERT, value)
 
@@ -92,8 +88,8 @@ def create_image(path):
 
 
 def create_text(root):
-    text = tkinter.Text(root, height=10, width=33)
-    text.grid(row=1, column=1)
+    text = tkinter.Text(root, height=10, width=33, font=("Times New Roman", 15))
+    text.grid(row=1, column=2)
     return text
 
 
@@ -109,20 +105,19 @@ def create_read_label(root):
 
 
 def create_main_image(image, root):
-    canvas = tkinter.Canvas(width=picture_width, height=picture_height, bg='black')
+    canvas = tkinter.Canvas(root, width=picture_width, height=picture_height,
+                            scrollregion=(1, 0, image.width(), image.height()), bg='white')
     canvas.grid(row=1, column=0)
 
+    scroll_x = tkinter.Scrollbar(root, orient="horizontal", command=canvas.xview)
+    scroll_x.grid(row=2, column=0, sticky="ew")
+
+    scroll_y = tkinter.Scrollbar(root, orient="vertical", command=canvas.yview)
+    scroll_y.grid(row=1, column=1, sticky="ns")
+
+    canvas.configure(yscrollcommand=scroll_y.set, xscrollcommand=scroll_x.set)
+
     image_on_canvas = canvas.create_image(0, 0, image=image, anchor=tkinter.NW)
-
-    # TODO: Delete
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-    # FIXME : Implement method, adding rectangles
-    canvas.bind('<Enter>', create_rectangles)
-    canvas.bind("<Leave>", disappear_rectangles)
-
-    # rectangles.append()z
-
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     return canvas, image_on_canvas
 
@@ -135,8 +130,8 @@ def create_rectangle(x1, y1, x2, y2, root, canvas, word, text, **kwargs):
         image = Image.new('RGBA', (x2 - x1, y2 - y1), fill)
         rectangles.append(ImageTk.PhotoImage(image))
         idd = canvas.create_image(x1, y1, image=rectangles[-1], anchor='nw')
-        canvas.tag_bind(idd, '<ButtonPress-1>', lambda event, tx=text, va=word.values, idd=idd: asd(tx, va, idd))
-        print("Created ID: " + str (idd))
+        canvas.tag_bind(idd, '<ButtonPress-1>',
+                        lambda event, tx=text, va=word.values, idd=idd: on_click_event(tx, va, idd))
         ids.append(idd)
     idd = canvas.create_rectangle(x1, y1, x2, y2, **kwargs)
     ids.append(idd)
