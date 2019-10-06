@@ -5,7 +5,7 @@ input_neurons = 1024
 output_neurons = 94
 
 learning_rate = 0.5
-weights = main.read_weights("C:/Users/PRECISION MX800/Desktop/OPTICAL-CHARACTER-RECOGNITION/src/network/vectors-15-50")
+weights = main.read_weights("C:/Users/PRECISION MX800/Desktop/OPTICAL-CHARACTER-RECOGNITION/src/network/vectors-30-50")
 # weights = main.set_random_weights(input_neurons, output_neurons)
 
 print("8=================================D~~")
@@ -24,12 +24,14 @@ def function(weights, filename):
         if counter >= 93:
             counter = 0
 
-# rangee = 15
+# rangee = 30
 #
 # weights = main.set_random_weights(input_neurons, output_neurons)
 #
 # for x in range(rangee):
 #      function(weights, "C:/Users/PRECISION MX800/Desktop/vol 1/0001.txt")
+#      function(weights, "C:/Users/PRECISION MX800/Desktop/vol 1/0002.txt")
+#      function(weights, "C:/Users/PRECISION MX800/Desktop/vol 1/0003.txt")
 #      print(x)
 #
 #
