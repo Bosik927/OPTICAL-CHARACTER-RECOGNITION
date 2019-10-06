@@ -5,8 +5,8 @@ input_neurons = 1024
 output_neurons = 94
 
 learning_rate = 0.5
-# weights = main.read_weights("C:/Users/mietek/PycharmProjects/ocr3/venv/petla_100_learning_rate_0.5")
-weights = main.set_random_weights(input_neurons, output_neurons)
+weights = main.read_weights("C:/Users/PRECISION MX800/Desktop/OPTICAL-CHARACTER-RECOGNITION/src/network/vectors-15-50")
+# weights = main.set_random_weights(input_neurons, output_neurons)
 
 print("8=================================D~~")
 
@@ -24,21 +24,20 @@ def function(weights, filename):
         if counter >= 93:
             counter = 0
 
-# for x in range(1):
-#     function(weights, "C:/Users/mietek/PycharmProjects/ocr3/venv/1.txt")
-#     function(weights, "C:/Users/mietek/PycharmProjects/ocr3/venv/2.txt")
-#     function(weights, "C:/Users/mietek/PycharmProjects/ocr3/venv/3.txt")
-#     function(weights, "C:/Users/mietek/PycharmProjects/ocr3/venv/4.txt")
-#     function(weights, "C:/Users/mietek/PycharmProjects/ocr3/venv/5.txt")
-#     function(weights, "C:/Users/mietek/PycharmProjects/ocr3/venv/6.txt")
-#     function(weights, "C:/Users/mietek/PycharmProjects/ocr3/venv/7.txt")
-#     function(weights, "C:/Users/mietek/PycharmProjects/ocr3/venv/8.txt")
+# rangee = 15
 #
-# main.save_weights(weights, "vectors")
+# weights = main.set_random_weights(input_neurons, output_neurons)
+#
+# for x in range(rangee):
+#      function(weights, "C:/Users/PRECISION MX800/Desktop/vol 1/0001.txt")
+#      print(x)
+#
+#
+# nazwa = "vectors-" + str(rangee) + "-"+str(int(learning_rate*100))
+# main.save_weights(weights, nazwa)
 
 
 def function2(vector):
-    weights = main.read_weights("C:/Users/Bosik/Desktop/repositories/PZ[L]2/OPTICAL-CHARACTER-RECOGNITION/src/network/vectors")
     list = []
     for xx in vector:
         # input_vector = main.string_to_vector(xx)
@@ -48,4 +47,4 @@ def function2(vector):
     return list
 
 
-# print(function2("C:/Users/mietek/PycharmProjects/ocr3/venv/1.txt"))
+#print(function2([3.4, 5.5]))
