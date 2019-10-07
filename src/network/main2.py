@@ -5,7 +5,7 @@ input_neurons = 1024
 output_neurons = 94
 
 learning_rate = 0.5
-weights = main.read_weights("C:/Users/PRECISION MX800/Desktop/OPTICAL-CHARACTER-RECOGNITION/src/network/vectors-30-50")
+weights = main.read_weights("C:/Users/Lenovo/Desktop/Projects/OPTICAL-CHARACTER-RECOGNITION/src/network/vectors-30-50")
 # weights = main.set_random_weights(input_neurons, output_neurons)
 
 print("8=================================D~~")

@@ -5,13 +5,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/OPTICAL-CHARACTER-RECOGNITION.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/OPTICAL-CHARACTER-RECOGNITION.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sieć/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sieć/main2.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/main2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sieć/symbols.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/symbols.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sieć/vectors" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/vectors" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Preprocesing.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Preprocesing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ViewInitializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewInitializer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/network/main2.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/main2.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -181,7 +177,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/ViewInitializer.py</url>
-          <line>77</line>
+          <line>87</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>

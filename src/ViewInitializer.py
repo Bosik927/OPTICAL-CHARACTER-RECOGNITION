@@ -38,28 +38,36 @@ def create_read_label(root):
 
 
 def create_text(root):
-    text = tkinter.Text(root, height=4, width=20, font=(output_font_family, output_font_size))
+    text = tkinter.Text(root, height=20, width=25, font=(output_font_family, output_font_size))
     text.tag_configure("center", justify='center')
     text.tag_add("center", 1.0, "end")
     text.grid(row=1, column=2)
     return text
 
 
-def create_search_button(root, canvas, image_on_canvas, text):
+def create_selected_text(root):
+    text = tkinter.Text(root, height=5, width=25, font=(output_font_family, output_font_size))
+    text.tag_configure("center", justify='center')
+    text.tag_add("center", 1.0, "end")
+    text.grid(row=2, column=2)
+    return text
+
+
+def create_search_button(root, canvas, image_on_canvas, text, text2):
     searching_button = tkinter.Button(root, text="Search image")
-    searching_button.grid(columnspan=1)
+    searching_button.grid(row=1, column=3)
     searching_button.bind('<Button-1>',
-                          lambda event, can=canvas, img=image_on_canvas, ro=root, tx=text:
-                          search_button_event(can, img, ro, tx))
+                          lambda event, can=canvas, img=image_on_canvas, ro=root, tx=text, tx2=text2:
+                          search_button_event(can, img, ro, tx, tx2))
     return searching_button
 
 
-def search_button_event(canvas, image_on_canvas, root, text):
+def search_button_event(canvas, image_on_canvas, root, text, text2):
     path = askopenfilename()
-    create_rectangles(canvas, image_on_canvas, root, text,path)
+    create_rectangles(canvas, image_on_canvas, root, text, path, text2)
 
 
-def create_rectangles(canvas, image_on_canvas, root, text, path):
+def create_rectangles(canvas, image_on_canvas, root, text, path, text2):
     start_time = time.time()
     image = img_to_photo_image(path)
     canvas.itemconfig(image_on_canvas, image=image)
@@ -72,12 +80,19 @@ def create_rectangles(canvas, image_on_canvas, root, text, path):
 
     prepro.save_vectorized_chars(words)
 
+    content = []
     for word in words:
         word.values = network.function2(word.chars)
+        content.append(word.values)
 
     create_rectangle_cords(root, canvas, words, ratio, text)
 
+    text2.delete('1.0', END)
+    text2.insert(INSERT, content)
+
+
     print("Elapsed: " + str(time.time() - start_time))
+
     canvas.itemconfig(image=image)
 
 
